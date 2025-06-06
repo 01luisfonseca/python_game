@@ -184,7 +184,11 @@ def player_movement(player, bullets, enemies):
     else:
         game_over(player.screen, player)
     # Remove bullets that are out of the screen
-    bullets = [bullet for bullet in bullets if bullet.y >= 5 and bullet.is_alive]
+    bullets = [
+        bullet
+        for bullet in bullets
+        if (5 <= bullet.y <= 595) and (5 <= bullet.x <= 795) and bullet.is_alive
+    ]
     for bullet in bullets:
         bullet.update_position()
         bullet.draw()
